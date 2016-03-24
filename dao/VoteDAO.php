@@ -30,6 +30,18 @@ class VoteDAO extends DAO {
 
 	}
 
+  public function voteForId($id){
+​
+		$sql = "UPDATE `voting` SET `votes`=`votes`+1 WHERE id=:id";
+​
+		$stmt = $this->pdo->prepare($sql);
+		$stmt->bindValue(':id', $id);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+​
+​
+	}
+
 
 
 }
